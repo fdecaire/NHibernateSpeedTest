@@ -15,8 +15,6 @@ namespace NHibernateSpeedTest
 		public NHibernatePerformanceTests()
 		{
 			File.Delete(@"c:\sqlserverresults.txt");
-
-			InitializeData();
 		}
 
 		public void InitializeData()
@@ -62,6 +60,8 @@ namespace NHibernateSpeedTest
 			double smallest = -1;
 			for (int i = 0; i < 5; i++)
 			{
+				InitializeData();
+
 				double result = TestInsert();
 
 				if (smallest < 0)
@@ -82,6 +82,9 @@ namespace NHibernateSpeedTest
 			smallest = -1;
 			for (int i = 0; i < 5; i++)
 			{
+				InitializeData();
+				TestInsert();
+
 				double result = TestUpdate();
 
 				if (smallest < 0)
@@ -102,6 +105,9 @@ namespace NHibernateSpeedTest
 			smallest = -1;
 			for (int i = 0; i < 5; i++)
 			{
+				InitializeData();
+				TestInsert();
+
 				double result = TestSelect();
 
 				if (smallest < 0)
@@ -122,6 +128,9 @@ namespace NHibernateSpeedTest
 			smallest = -1;
 			for (int i = 0; i < 5; i++)
 			{
+				InitializeData();
+				TestInsert();
+
 				double result = TestDelete();
 
 				if (smallest < 0)
@@ -163,7 +172,7 @@ namespace NHibernateSpeedTest
 						lastnames.Add(line);
 				}
 
-				//test inserting 1000 records
+				//test inserting 10000 records (only ~1,000 names in text)
 				var startTime = DateTime.Now;
 				using (db.BeginTransaction())
 				{
@@ -199,7 +208,7 @@ namespace NHibernateSpeedTest
 				{
 					var query = (from p in db.Query<Person>()
 								 join d in db.Query<Department>() on p.department equals d.id
-								 select p);
+								 select p).ToList();
 				}
 				var elapsedTime = DateTime.Now - startTime;
 
@@ -253,7 +262,7 @@ namespace NHibernateSpeedTest
 
 		public void WriteLine(string text)
 		{
-			using (var writer = new StreamWriter("c:\\mysqlresults.txt", true))
+			using (var writer = new StreamWriter("c:\\nhibernate_speed_tests.txt", true))
 			{
 				writer.WriteLine(text);
 			}
