@@ -25,3 +25,4 @@ C:\Users\fdecaire\Documents\Visual Studio 2015\Projects\NHibernateSpeedTest\NHib
 C:\Users\fdecaire\Documents\Visual Studio 2015\Projects\NHibernateSpeedTest\NHibernateSpeedTest\bin\Debug\Iesi.Collections.xml
 C:\Users\fdecaire\Documents\Visual Studio 2015\Projects\NHibernateSpeedTest\NHibernateSpeedTest\bin\Debug\NHibernate.xml
 C:\Users\fdecaire\Documents\Visual Studio 2015\Projects\NHibernateSpeedTest\NHibernateSpeedTest\obj\Debug\NHibernateSpeedTest.csprojResolveAssemblyReference.cache
+C:\Users\fdecaire\Documents\Visual Studio 2015\Projects\NHibernateSpeedTest\NHibernateSpeedTest\bin\Debug\FluentNHibernate.pdb

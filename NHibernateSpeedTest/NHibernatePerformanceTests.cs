@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NHibernate.Linq;
 
 namespace NHibernateSpeedTest
@@ -14,7 +12,7 @@ namespace NHibernateSpeedTest
 
 		public NHibernatePerformanceTests()
 		{
-			File.Delete(@"c:\sqlserverresults.txt");
+			File.Delete(@"c:\nhibernate_speed_tests.txt");
 		}
 
 		public void InitializeData()
@@ -208,7 +206,7 @@ namespace NHibernateSpeedTest
 				{
 					var query = (from p in db.Query<Person>()
 								 join d in db.Query<Department>() on p.department equals d.id
-								 select p).ToList();
+								 select p);//.ToList();
 				}
 				var elapsedTime = DateTime.Now - startTime;
 
@@ -262,7 +260,7 @@ namespace NHibernateSpeedTest
 
 		public void WriteLine(string text)
 		{
-			using (var writer = new StreamWriter("c:\\nhibernate_speed_tests.txt", true))
+			using (var writer = new StreamWriter(@"c:\nhibernate_speed_tests.txt", true))
 			{
 				writer.WriteLine(text);
 			}
